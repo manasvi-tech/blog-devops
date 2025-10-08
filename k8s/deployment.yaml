@@ -13,19 +13,21 @@ spec:
         app: nextjs-blog
     spec:
       containers:
-      - name: nextjs-blog
-        image: ghcr.io/<your-username>/<repo>:latest
-        ports:
-        - containerPort: 3000
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 3000
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 3000
-          initialDelaySeconds: 15
-          periodSeconds: 20
+        - name: nextjs-blog
+          image: ghcr.io/manasvi-tech/blog-devops:latest
+          ports:
+            - containerPort: 3000
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 15
+            periodSeconds: 20
+      imagePullSecrets:
+        - name: ghcr
